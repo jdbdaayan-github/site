@@ -2,7 +2,7 @@ name: Deploy Static HTML to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ]   # deploy every time you push to main
 
 permissions:
   contents: read
@@ -17,10 +17,14 @@ jobs:
       - name: Checkout files
         uses: actions/checkout@v4
 
-      - name: Deploy
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
+      # 👉 Here is your CI step (practice zone)
+      - name: Run simple CI check
+        run: echo "Running CI step for practice..."
 
-      - name: Publish
-        uses: actions/deploy-pages@v4
+      # 👉 If you want more practice, add more CI steps (linting, tests, etc.)
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .    # root folder with index.html
