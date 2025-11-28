@@ -37,3 +37,21 @@ nav .nav-menu .nav-link a:hover {
     background-color:#ffdd00;
     border-radius: 5px;
 }
+
+nav .burger {
+    display: none;
+    font-size: 18px;
+}
+
+@media (max-width:720px) {
+    nav {
+        justify-content: space-between;
+        padding: 0 30px;
+    }
+    .nav-menu {
+        display: none;
+    }
+    nav .burger {
+        display: block;
+    }
+}
