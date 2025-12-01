@@ -1,19 +1,12 @@
 <template>
-  <footer class="footer">
-    <p>© 2025 My Vue Website. All rights reserved.</p>
-  </footer>
+  <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+  <aside>
+    <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+  </aside>
+</footer>
 </template>
 
 <script>
 export default { name: 'Footer' }
 </script>
 
-<style scoped>
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: auto;
-}
-</style>
