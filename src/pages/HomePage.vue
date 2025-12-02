@@ -2,34 +2,8 @@
   <div class="w-full">
 
     <!-- HERO SECTION -->
-    <section class="hero min-h-screen bg-base-200">
-      <div class="hero-content flex-col lg:flex-row-reverse">
-
-        <!-- Hero Image with 3D Hover Effect -->
-        <div class="hover-3d max-w-sm">
-          <figure class="rounded-2xl shadow-xl overflow-hidden">
-            <img
-              src="https://img.daisyui.com/images/stock/creditcard.webp"
-              alt="3D Hero Card"
-              class="w-full"
-            />
-          </figure>
-          <!-- 3D layers -->
-          <div></div><div></div><div></div><div></div>
-          <div></div><div></div><div></div><div></div>
-        </div>
-
-        <!-- Hero Text -->
-        <div class="max-w-xl">
-          <h1 class="text-5xl font-bold">Welcome to Our Website</h1>
-          <p class="py-6 text-lg leading-relaxed">
-            Experience a modern and elegant interface powered by Vue 3, Tailwind, and DaisyUI.
-            Fast, responsive, and beautifully designed for all devices.
-          </p>
-          <button class="btn btn-primary">Get Started</button>
-        </div>
-
-      </div>
+    <section class="hero">
+      <Banner/>
     </section>
 
     <!-- FEATURES SECTION -->
@@ -94,8 +68,11 @@
 </template>
 
 <script>
+import Banner from '../components/Banner.vue';
+
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  components : {Banner}
 }
 </script>
 

@@ -1,30 +1,23 @@
 <template>
   <div class="navbar bg-primary shadow-sm">
-
-    <!-- LEFT SECTION -->
+<div class="w-7xl flex mx-auto"><!-- LEFT SECTION -->
     <div class="flex-1">
       <div class="flex">
-        <a class="btn btn-ghost text-xl">daisyUI</a>
-
-      <!-- Navigation Links -->
-      <ul class="menu menu-horizontal px-1 hidden md:flex">
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/about">About</router-link></li>
-        <li><router-link to="/resources">Resources</router-link></li>
-      </ul>
+        <a class="btn btn-ghost text-xl items-center">Administrative Servicebr<small class="text-orange-300">GAD Information Hub</small></a>
       </div>
       
     </div>
 
     <!-- RIGHT SECTION -->
     <div class="flex gap-2">
-
-      <!-- Search Bar -->
-      <input
-        type="text"
-        placeholder="Search"
-        class="input input-bordered w-24 md:w-auto"
-      />
+      
+<!-- Navigation Links -->
+      <ul class="menu menu-horizontal px-1 hidden md:flex">
+        <li><router-link to="/">HOME</router-link></li>
+        <li><router-link to="/about">DIRECTORY</router-link></li>
+        <li><router-link to="/resources">RESOURCES</router-link></li>
+        <li><router-link to="/activities">ACTIVITIES</router-link></li>
+      </ul>
 
       <!-- Avatar Dropdown -->
       <div class="dropdown dropdown-end">
@@ -50,7 +43,8 @@
           <li><a>Logout</a></li>
         </ul>
       </div>
-    </div>
+    </div></div>
+    
 
   </div>
 </template>
