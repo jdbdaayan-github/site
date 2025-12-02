@@ -3,13 +3,16 @@
 
     <!-- LEFT SECTION -->
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl">daisyUI</a>
+      <div class="flex">
+        <a class="btn btn-ghost text-xl">daisyUI</a>
 
       <!-- Navigation Links -->
       <ul class="menu menu-horizontal px-1 hidden md:flex">
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/about">About</router-link></li>
       </ul>
+      </div>
+      
     </div>
 
     <!-- RIGHT SECTION -->
