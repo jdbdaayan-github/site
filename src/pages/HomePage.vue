@@ -1,31 +1,31 @@
 <template>
-  <div class="w-full">
+  <div class="w-full bg-base-100 text-base-content">
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Banner stays) -->
     <section class="hero">
-      <Banner/>
+      <Banner />
     </section>
 
     <!-- FEATURES SECTION -->
-    <section class="py-20 bg-base-100">
+    <section class="py-20 bg-white">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-12">Why Choose Us?</h2>
+        <h2 class="text-4xl font-bold text-center mb-12 text-primary">Why GAD Matters</h2>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-          <div class="card bg-base-200 shadow-xl p-6 text-center">
-            <h3 class="text-2xl font-bold mb-2">Fast</h3>
-            <p>Optimized performance with modern UI tools.</p>
+          <div class="card bg-white shadow-lg p-6 text-center border border-gray-200 hover:shadow-2xl transition-all">
+            <h3 class="text-2xl font-bold mb-2 text-primary">Inclusivity</h3>
+            <p>Promoting equal opportunities for all genders in the workplace and community.</p>
           </div>
 
-          <div class="card bg-base-200 shadow-xl p-6 text-center">
-            <h3 class="text-2xl font-bold mb-2">Responsive</h3>
-            <p>Looks clean and perfect on all screen sizes.</p>
+          <div class="card bg-white shadow-lg p-6 text-center border border-gray-200 hover:shadow-2xl transition-all">
+            <h3 class="text-2xl font-bold mb-2 text-primary">Empowerment</h3>
+            <p>Providing knowledge, skills, and resources to support gender equality initiatives.</p>
           </div>
 
-          <div class="card bg-base-200 shadow-xl p-6 text-center">
-            <h3 class="text-2xl font-bold mb-2">Beautiful</h3>
-            <p>Crafted with DaisyUI components for great visuals.</p>
+          <div class="card bg-white shadow-lg p-6 text-center border border-gray-200 hover:shadow-2xl transition-all">
+            <h3 class="text-2xl font-bold mb-2 text-primary">Awareness</h3>
+            <p>Sharing activities, policies, and programs to strengthen GAD understanding.</p>
           </div>
 
         </div>
@@ -33,34 +33,36 @@
     </section>
 
     <!-- INFO SECTION -->
-    <section class="py-20 bg-base-200">
+    <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-6 flex flex-col lg:flex-row gap-12 items-center">
 
         <div class="flex-1">
-          <h2 class="text-4xl font-bold mb-4">Modern UI Built Effortlessly</h2>
-          <p class="text-lg leading-relaxed">
-            With Vue and DaisyUI, building beautiful interfaces becomes easier than ever.
-            Reusable components, customizable themes, and Tailwind utilities give you full control
-            of your design.
+          <h2 class="text-4xl font-bold mb-4 text-primary">Access All GAD Resources Easily</h2>
+          <p class="text-lg leading-relaxed text-gray-700">
+            Explore our directories, activities, and resources designed to promote Gender and Development initiatives.
+            Our platform helps offices, staff, and the public stay informed and engaged with GAD programs.
           </p>
-          <button class="btn btn-secondary mt-6">Learn More</button>
+          <button class="btn btn-primary mt-6">Learn More</button>
         </div>
 
         <div class="flex-1">
-          <div class="skeleton h-64 w-full rounded-2xl"></div>
+          <!-- Optional illustration placeholder -->
+          <div class="skeleton h-64 w-full rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-lg font-semibold">
+            GAD Illustration
+          </div>
         </div>
 
       </div>
     </section>
 
     <!-- CTA SECTION -->
-    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
-      <h2 class="text-4xl font-bold mb-4">Start Building Beautiful Websites Today</h2>
+    <section class="py-20 bg-gradient-to-r from-primary/80 to-secondary/80 text-white text-center">
+      <h2 class="text-4xl font-bold mb-4">Join Our GAD Initiatives</h2>
       <p class="text-lg opacity-90 mb-8">
-        Vue + Tailwind + DaisyUI = perfect combination for fast, modern web design.
+        Stay updated on events, trainings, and programs to promote Gender and Development in our organization.
       </p>
       <button class="btn btn-outline btn-lg text-white border-white">
-        Join Now
+        Get Involved
       </button>
     </section>
 
@@ -72,12 +74,11 @@ import Banner from '../components/Banner.vue';
 
 export default {
   name: 'HomePage',
-  components : {Banner}
+  components: { Banner }
 }
 </script>
 
 <style scoped>
-/* Optional: custom 3D hover effect if you're really using it */
 .hover-3d {
   position: relative;
   perspective: 1200px;
