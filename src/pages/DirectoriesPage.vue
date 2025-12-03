@@ -1,105 +1,209 @@
 <template>
-  <div class="max-w-7xl mx-auto p-4">
+  <div class="min-h-screen bg-white text-base-content">
+    <div class="max-w-4xl mx-auto p-6">
 
-    <!-- PAGE HEADER -->
-    <div class="mb-6">
-      <h1 class="text-3xl font-bold text-primary">GAD Directories</h1>
-      <p class="text-base-content/70">Official directory of GAD focal persons, offices, and contact information.</p>
-    </div>
+      <!-- Page header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-primary">GAD Organizational Directory</h1>
+        <p class="text-gray-600 mt-1">Hierarchy from Chairperson to Secretariat and Members.</p>
+      </div>
 
-    <!-- SEARCH BAR -->
-    <div class="mb-6 flex justify-start">
-      <label class="input input-bordered flex items-center gap-2 w-full md:w-1/2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50"
-             viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-                d="M9 3.5a5.5 5.5 0 015.5 5.5c0 1.304-.467 2.5-1.243 3.426l3.658 3.657a.75.75 0 11-1.06 1.06l-3.657-3.658A5.5 5.5 0 119 3.5zm-4 5.5a4 4 0 118 0 4 4 0 01-8 0z"
-                clip-rule="evenodd" />
-        </svg>
-        <input
-          type="text"
-          v-model="search"
-          class="grow"
-          placeholder="Search office, name, or position…" />
-      </label>
-    </div>
-
-    <!-- DIRECTORY GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-      <div
-        v-for="(item, index) in filteredDirectories"
-        :key="index"
-        class="card bg-base-100 shadow-md hover:shadow-xl transition-all border border-base-200"
-      >
-        <div class="card-body">
-          
-          <!-- OFFICE TITLE -->
-          <h2 class="card-title text-primary">
-            {{ item.office }}
-          </h2>
-
-          <!-- DETAILS -->
-          <div class="text-base-content/80 space-y-1">
-            <p><span class="font-semibold">Name:</span> {{ item.name }}</p>
-            <p><span class="font-semibold">Position:</span> {{ item.position }}</p>
-            <p><span class="font-semibold">Email:</span> {{ item.email }}</p>
-            <p><span class="font-semibold">Phone:</span> {{ item.phone }}</p>
+      <!-- Top: Chairperson (centered) -->
+      <div class="flex justify-center mb-8">
+        <div class="card bg-white shadow-md border border-gray-200 rounded-xl w-full sm:w-3/4">
+          <div class="card-body flex items-center gap-4 p-4">
+            <div class="avatar">
+              <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
+                M
+              </div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-500">Chairperson</div>
+              <div class="text-lg font-semibold text-primary">Maria L. Reyes</div>
+              <div class="text-sm text-gray-500">Office of the Director</div>
+            </div>
+            <div class="ml-auto hidden sm:flex gap-2">
+              <button class="btn btn-ghost btn-sm">Profile</button>
+              <button class="btn btn-outline btn-sm">Contact</button>
+            </div>
           </div>
-
-          <!-- ACTION BUTTON -->
-          <div class="card-actions justify-end mt-3">
-            <button class="btn btn-primary btn-sm">View Details</button>
-          </div>
-
         </div>
       </div>
 
-    </div>
+      <!-- Divider: Secretariat -->
+      <div class="mb-4">
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-[1px] bg-gray-200"></div>
+          <div class="px-3 text-sm font-semibold text-gray-600 uppercase">Secretariat</div>
+          <div class="flex-1 h-[1px] bg-gray-200"></div>
+        </div>
+      </div>
 
+      <!-- Secretariat group with vertical connector -->
+      <div class="relative pl-6 sm:pl-10 mb-8">
+        <!-- vertical line -->
+        <div class="absolute left-3 top-0 bottom-0 hidden sm:block">
+          <div class="w-[2px] bg-gray-200 h-full"></div>
+        </div>
+
+        <div class="space-y-4">
+          <template v-for="(p, idx) in secretariat" :key="p.email">
+            <div class="relative">
+              <!-- connector dot -->
+              <div class="absolute -left-2 top-3 hidden sm:block">
+                <div class="w-3 h-3 rounded-full bg-white border-2 border-primary"></div>
+              </div>
+
+              <div class="card bg-white shadow-sm border border-gray-200 rounded-lg p-3 flex items-center gap-4">
+                <div class="avatar">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium">
+                    {{ initials(p.name) }}
+                  </div>
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500">{{ p.position }}</div>
+                  <div class="text-base font-semibold text-primary">{{ p.name }}</div>
+                  <div class="text-sm text-gray-500">{{ p.office }}</div>
+                </div>
+                <div class="ml-auto hidden sm:flex gap-2">
+                  <button class="btn btn-ghost btn-xs">Profile</button>
+                  <button class="btn btn-outline btn-xs">Contact</button>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Divider: Members -->
+      <div class="mb-4">
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-[1px] bg-gray-200"></div>
+          <div class="px-3 text-sm font-semibold text-gray-600 uppercase">Members</div>
+          <div class="flex-1 h-[1px] bg-gray-200"></div>
+        </div>
+      </div>
+
+      <!-- Members group, nested under secretariat -->
+      <div class="relative pl-6 sm:pl-10 mb-8">
+        <!-- vertical line -->
+        <div class="absolute left-3 top-0 bottom-0 hidden sm:block">
+          <div class="w-[2px] bg-gray-200 h-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <template v-for="m in members" :key="m.email">
+            <div class="relative">
+              <div class="absolute -left-2 top-4 hidden sm:block">
+                <div class="w-3 h-3 rounded-full bg-white border-2 border-primary"></div>
+              </div>
+
+              <div class="card bg-white shadow-sm border border-gray-200 rounded-lg p-3 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium">
+                  {{ initials(m.name) }}
+                </div>
+                <div class="flex-1">
+                  <div class="text-sm text-gray-500">{{ m.position }}</div>
+                  <div class="text-sm font-semibold text-primary">{{ m.name }}</div>
+                </div>
+                <div class="text-right text-sm text-gray-500 hidden sm:block">
+                  <div>{{ m.office }}</div>
+                  <div class="mt-1">{{ m.phone }}</div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Optional: Footer CTA -->
+      <div class="text-center pt-4 border-t border-gray-100">
+        <button class="btn btn-primary">View Full Directory</button>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "GadDirectories",
+  name: "GadHierarchy",
 
   data() {
     return {
-      search: "",
-      directories: [
+      secretariat: [
         {
-          office: "Administrative Service",
           name: "Juan D. Cruz",
-          position: "GAD Focal Person",
+          position: "Secretariat Head",
+          office: "GAD Secretariat",
           email: "juan.cruz@example.com",
-          phone: "09171234567",
+          phone: "0917-123-4567",
         },
         {
-          office: "Human Resource Division",
-          name: "Ana Marie Santos",
-          position: "Assistant Focal Person",
+          name: "Ana M. Santos",
+          position: "Secretariat Officer",
+          office: "GAD Secretariat",
           email: "ana.santos@example.com",
-          phone: "09981234567",
+          phone: "0998-765-4321",
+        },
+      ],
+      members: [
+        {
+          name: "Mark L. Flores",
+          position: "GAD Focal Person",
+          office: "Finance & Budget Division",
+          email: "mark.flores@example.com",
+          phone: "0922-111-2222",
         },
         {
-          office: "Finance & Budget Division",
-          name: "Mark L. Flores",
-          position: "GAD Coordinator",
-          email: "mark.flores@example.com",
-          phone: "09221234567",
+          name: "Liza P. Dela Cruz",
+          position: "Member",
+          office: "Administrative Service",
+          email: "liza.delacruz@example.com",
+          phone: "0918-333-4444",
+        },
+        {
+          name: "Rafael S. Gomez",
+          position: "Member",
+          office: "Human Resource Division",
+          email: "rafael.gomez@example.com",
+          phone: "0933-555-6666",
+        },
+        {
+          name: "Carla T. Medina",
+          position: "Member",
+          office: "Operations",
+          email: "carla.medina@example.com",
+          phone: "0944-777-8888",
         },
       ],
     };
   },
 
-  computed: {
-    filteredDirectories() {
-      const q = this.search.toLowerCase();
-      return this.directories.filter((d) =>
-        Object.values(d).some((val) => val.toLowerCase().includes(q))
-      );
+  methods: {
+    initials(name) {
+      return name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase();
     },
   },
 };
 </script>
+
+<style scoped>
+/* Ensure full white page even if parent has different background */
+:root {
+  background-color: #ffffff;
+}
+
+/* Small responsive tweaks */
+@media (max-width: 640px) {
+  /* remove left connectors on small screens for cleaner layout */
+  .relative > .absolute {
+    display: none !important;
+  }
+}
+</style>

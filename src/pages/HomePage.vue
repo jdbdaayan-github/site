@@ -15,17 +15,17 @@
 
           <div class="card bg-white shadow-lg p-6 text-center border border-gray-200 hover:shadow-2xl transition-all">
             <h3 class="text-2xl font-bold mb-2 text-primary">Inclusivity</h3>
-            <p>Promoting equal opportunities for all genders in the workplace and community.</p>
+            <p class="text-gray-700">Promoting equal opportunities for all genders in the workplace and community.</p>
           </div>
 
           <div class="card bg-white shadow-lg p-6 text-center border border-gray-200 hover:shadow-2xl transition-all">
             <h3 class="text-2xl font-bold mb-2 text-primary">Empowerment</h3>
-            <p>Providing knowledge, skills, and resources to support gender equality initiatives.</p>
+            <p class="text-gray-700">Providing knowledge, skills, and resources to support gender equality initiatives.</p>
           </div>
 
           <div class="card bg-white shadow-lg p-6 text-center border border-gray-200 hover:shadow-2xl transition-all">
             <h3 class="text-2xl font-bold mb-2 text-primary">Awareness</h3>
-            <p>Sharing activities, policies, and programs to strengthen GAD understanding.</p>
+            <p class="text-gray-700">Sharing activities, policies, and programs to strengthen GAD understanding.</p>
           </div>
 
         </div>

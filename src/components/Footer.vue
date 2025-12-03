@@ -1,7 +1,7 @@
 <template>
-  <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+  <footer class="footer sm:footer-horizontal footer-center bg-primary text-base-content p-4">
     <aside>
-      <p>Copyright © {{ year }} — All rights reserved by ACME Industries Ltd.</p>
+      <p>Copyright © {{ year }} — All rights reserved by J.D.B. DA-AYAN.</p>
     </aside>
   </footer>
 </template>
