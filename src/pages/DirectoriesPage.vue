@@ -2,26 +2,28 @@
   <div class="min-h-screen bg-white text-base-content">
     <div class="max-w-4xl mx-auto p-6">
 
-      <!-- Page header -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-primary">GAD Organizational Directory</h1>
-        <p class="text-gray-600 mt-1">Hierarchy from Chairperson to Secretariat and Members.</p>
+      <!-- HEADER -->
+      <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-primary">GAD Organizational Directory</h1>
+        <p class="text-gray-600 mt-2">Official hierarchy from Chairperson to Secretariat and Members.</p>
       </div>
 
-      <!-- Top: Chairperson (centered) -->
-      <div class="flex justify-center mb-8">
-        <div class="card bg-white shadow-md border border-gray-200 rounded-xl w-full sm:w-3/4">
-          <div class="card-body flex items-center gap-4 p-4">
+      <!-- CHAIRPERSON -->
+      <div class="flex justify-center mb-10">
+        <div class="card bg-white border border-gray-200 shadow-lg rounded-2xl w-full sm:w-2/3">
+          <div class="card-body flex items-center gap-5 p-6">
             <div class="avatar">
-              <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
-                M
+              <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl font-bold">
+                {{ initials("Maria L. Reyes") }}
               </div>
             </div>
+
             <div>
-              <div class="text-sm text-gray-500">Chairperson</div>
-              <div class="text-lg font-semibold text-primary">Maria L. Reyes</div>
+              <div class="text-xs font-semibold text-gray-500 uppercase">Chairperson</div>
+              <div class="text-xl font-bold text-primary">Maria L. Reyes</div>
               <div class="text-sm text-gray-500">Office of the Director</div>
             </div>
+
             <div class="ml-auto hidden sm:flex gap-2">
               <button class="btn btn-ghost btn-sm">Profile</button>
               <button class="btn btn-outline btn-sm">Contact</button>
@@ -30,95 +32,94 @@
         </div>
       </div>
 
-      <!-- Divider: Secretariat -->
-      <div class="mb-4">
-        <div class="flex items-center gap-3">
-          <div class="flex-1 h-[1px] bg-gray-200"></div>
-          <div class="px-3 text-sm font-semibold text-gray-600 uppercase">Secretariat</div>
-          <div class="flex-1 h-[1px] bg-gray-200"></div>
-        </div>
-      </div>
+      <!-- SECTION: SECRETARIAT -->
+      <SectionDivider label="Secretariat" />
 
-      <!-- Secretariat group with vertical connector -->
-      <div class="relative pl-6 sm:pl-10 mb-8">
-        <!-- vertical line -->
+      <div class="relative pl-6 sm:pl-10 mb-12">
+        <!-- Main vertical line -->
         <div class="absolute left-3 top-0 bottom-0 hidden sm:block">
-          <div class="w-[2px] bg-gray-200 h-full"></div>
+          <div class="w-[2px] bg-gray-300 h-full rounded-full"></div>
         </div>
 
-        <div class="space-y-4">
-          <template v-for="(p, idx) in secretariat" :key="p.email">
+        <div class="space-y-5">
+          <template v-for="s in secretariat" :key="s.email">
             <div class="relative">
-              <!-- connector dot -->
-              <div class="absolute -left-2 top-3 hidden sm:block">
-                <div class="w-3 h-3 rounded-full bg-white border-2 border-primary"></div>
+
+              <!-- Dot -->
+              <div class="absolute -left-2 top-5 hidden sm:block">
+                <div class="w-3 h-3 bg-primary border-4 border-white rounded-full shadow-sm"></div>
               </div>
 
-              <div class="card bg-white shadow-sm border border-gray-200 rounded-lg p-3 flex items-center gap-4">
+              <div class="card bg-white border border-gray-200 shadow-sm hover:shadow-md transition rounded-xl p-4 flex items-center gap-4">
                 <div class="avatar">
-                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium">
-                    {{ initials(p.name) }}
+                  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
+                    {{ initials(s.name) }}
                   </div>
                 </div>
+
                 <div>
-                  <div class="text-sm text-gray-500">{{ p.position }}</div>
-                  <div class="text-base font-semibold text-primary">{{ p.name }}</div>
-                  <div class="text-sm text-gray-500">{{ p.office }}</div>
+                  <div class="text-xs text-gray-500 uppercase">{{ s.position }}</div>
+                  <div class="text-lg font-semibold text-primary">{{ s.name }}</div>
+                  <div class="text-sm text-gray-500">{{ s.office }}</div>
                 </div>
+
                 <div class="ml-auto hidden sm:flex gap-2">
                   <button class="btn btn-ghost btn-xs">Profile</button>
                   <button class="btn btn-outline btn-xs">Contact</button>
                 </div>
               </div>
+
             </div>
           </template>
         </div>
       </div>
 
-      <!-- Divider: Members -->
-      <div class="mb-4">
-        <div class="flex items-center gap-3">
-          <div class="flex-1 h-[1px] bg-gray-200"></div>
-          <div class="px-3 text-sm font-semibold text-gray-600 uppercase">Members</div>
-          <div class="flex-1 h-[1px] bg-gray-200"></div>
-        </div>
-      </div>
+      <!-- SECTION: MEMBERS -->
+      <SectionDivider label="Members" />
 
-      <!-- Members group, nested under secretariat -->
-      <div class="relative pl-6 sm:pl-10 mb-8">
-        <!-- vertical line -->
+      <div class="relative pl-6 sm:pl-10 mb-12">
+
+        <!-- Main vertical line -->
         <div class="absolute left-3 top-0 bottom-0 hidden sm:block">
-          <div class="w-[2px] bg-gray-200 h-full"></div>
+          <div class="w-[2px] bg-gray-300 h-full rounded-full"></div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <template v-for="m in members" :key="m.email">
             <div class="relative">
-              <div class="absolute -left-2 top-4 hidden sm:block">
-                <div class="w-3 h-3 rounded-full bg-white border-2 border-primary"></div>
+
+              <!-- Dot -->
+              <div class="absolute -left-2 top-6 hidden sm:block">
+                <div class="w-3 h-3 bg-primary border-4 border-white rounded-full shadow-sm"></div>
               </div>
 
-              <div class="card bg-white shadow-sm border border-gray-200 rounded-lg p-3 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium">
+              <div class="card bg-white border border-gray-200 shadow-sm hover:shadow-md transition rounded-xl p-4 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
                   {{ initials(m.name) }}
                 </div>
+
                 <div class="flex-1">
-                  <div class="text-sm text-gray-500">{{ m.position }}</div>
-                  <div class="text-sm font-semibold text-primary">{{ m.name }}</div>
+                  <div class="text-xs uppercase text-gray-500">{{ m.position }}</div>
+                  <div class="text-[15px] font-semibold text-primary">{{ m.name }}</div>
+                  <div class="text-xs text-gray-500">{{ m.office }}</div>
                 </div>
-                <div class="text-right text-sm text-gray-500 hidden sm:block">
-                  <div>{{ m.office }}</div>
-                  <div class="mt-1">{{ m.phone }}</div>
+
+                <div class="hidden sm:block text-right text-xs text-gray-500">
+                  <div>{{ m.phone }}</div>
                 </div>
               </div>
+
             </div>
           </template>
         </div>
+
       </div>
 
-      <!-- Optional: Footer CTA -->
-      <div class="text-center pt-4 border-t border-gray-100">
-        <button class="btn btn-primary">View Full Directory</button>
+      <!-- FOOTER CTA -->
+      <div class="text-center pt-6">
+        <button class="btn btn-primary btn-lg rounded-full shadow-md">
+          View Full Directory
+        </button>
       </div>
 
     </div>
@@ -147,6 +148,7 @@ export default {
           phone: "0998-765-4321",
         },
       ],
+
       members: [
         {
           name: "Mark L. Flores",
@@ -190,18 +192,27 @@ export default {
         .toUpperCase();
     },
   },
+
+  components: {
+    SectionDivider: {
+      props: ["label"],
+      template: `
+        <div class="mb-6 flex items-center gap-3">
+          <div class="flex-1 h-[1px] bg-gray-300"></div>
+          <div class="px-4 py-1 text-sm font-bold text-gray-600 uppercase bg-gray-100 rounded-full border border-gray-300 shadow-sm">
+            {{ label }}
+          </div>
+          <div class="flex-1 h-[1px] bg-gray-300"></div>
+        </div>
+      `,
+    },
+  },
 };
 </script>
 
 <style scoped>
-/* Ensure full white page even if parent has different background */
-:root {
-  background-color: #ffffff;
-}
-
-/* Small responsive tweaks */
+/* Mobile cleanup */
 @media (max-width: 640px) {
-  /* remove left connectors on small screens for cleaner layout */
   .relative > .absolute {
     display: none !important;
   }
