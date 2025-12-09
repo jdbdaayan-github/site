@@ -25,6 +25,9 @@
         </div>
 
         <!-- TITLE -->
+         <div class="bp-logo">
+            <BPLogo />
+          </div>
         <div class="flex flex-col leading-tight">
           <span class="text-lg font-semibold text-white">
             Administrative Service
@@ -77,7 +80,9 @@
 </template>
 
 <script>
+import BPLogo from './BPLogo.vue';
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  components: { BPLogo }
 }
 </script>
